@@ -1,6 +1,13 @@
 #!/bin/bash
 #
 # Allows you to select different components to set up.
+# USAGE:
+#
+# ./setup <component> <component2> ...
+#
+# EXAMPLE:
+#
+# ./setup kitty awesome
 #
 
 setup_kitty() {
