@@ -268,15 +268,26 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     -- My keybinds
+    	-- app launching
     awful.key({ mykey, 		  }, "f", function () awful.spawn("firefox") end),
     awful.key({ mykey, 		  }, "d", function () awful.spawn("discord") end),
+     	-- host keyboard 
+    awful.key({}, "F10", function () brightness_widget:inc() end,
+    	{description = "increase brightness", group = "custom"}),
+    awful.key({}, "F9", function () brightness_widget:dec() end, 
+    	{description = "decrease brightness", group = "custom"}), 
+    awful.key({}, "F6", function () volume_widget:inc(5) end),
+    awful.key({}, "F5", function () volume_widget:dec(5) end),
+    awful.key({}, "F8", function () volume_widget:toggle() end), 
+	-- cool keyboard
+    awful.key({}, "XF86AudioRaiseVolume", function () volume_widget:inc(5) end),
+    awful.key({}, "XF86AudioLowerVolume", function () volume_widget:dec(5) end),
+    awful.key({}, "XF86AudioMute", function () volume_widget:toggle() end), 
     awful.key({}, "XF86MonBrightnessUp", function () brightness_widget:inc() end,
     	{description = "increase brightness", group = "custom"}),
     awful.key({}, "XF86MonBrightnessDown", function () brightness_widget:dec() end, 
     	{description = "decrease brightness", group = "custom"}), 
-    awful.key({}, "XF86AudioRaiseVolume", function () volume_widget:inc(5) end),
-    awful.key({}, "XF86AudioLowerVolume", function () volume_widget:dec(5) end),
-    awful.key({}, "XF86AudioMute", function () volume_widget:toggle() end), 
+	-- screenshot
     awful.key({}, "Print"	 , function () awful.spawn("spectacle") end), 
     --
 	
@@ -514,6 +525,7 @@ awful.rules.rules = {
           "DTA",  -- Firefox addon DownThemAll.
           "copyq",  -- Includes session name in class.
           "pinentry",
+	  "spectacle"
         },
         class = {
           "Arandr",
