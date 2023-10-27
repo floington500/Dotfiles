@@ -219,10 +219,9 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+	    logout_menu_widget(), --mylauncher,	
             s.mytaglist,
-            s.mypromptbox,
-	    logout_menu_widget()
+            s.mypromptbox
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
@@ -271,22 +270,15 @@ globalkeys = gears.table.join(
     	-- app launching
     awful.key({ mykey, 		  }, "f", function () awful.spawn("firefox") end),
     awful.key({ mykey, 		  }, "d", function () awful.spawn("discord") end),
-     	-- host keyboard 
-    awful.key({}, "F10", function () brightness_widget:inc() end,
-    	{description = "increase brightness", group = "custom"}),
-    awful.key({}, "F9", function () brightness_widget:dec() end, 
-    	{description = "decrease brightness", group = "custom"}), 
-    awful.key({}, "F6", function () volume_widget:inc(5) end),
-    awful.key({}, "F5", function () volume_widget:dec(5) end),
-    awful.key({}, "F8", function () volume_widget:toggle() end), 
-	-- cool keyboard
+    awful.key({ mykey, 		  }, "o", function () awful.spawn("obsidian") end),
+    	-- cool keyboard
     awful.key({}, "XF86AudioRaiseVolume", function () volume_widget:inc(5) end),
     awful.key({}, "XF86AudioLowerVolume", function () volume_widget:dec(5) end),
     awful.key({}, "XF86AudioMute", function () volume_widget:toggle() end), 
-    awful.key({}, "XF86MonBrightnessUp", function () brightness_widget:inc() end,
-    	{description = "increase brightness", group = "custom"}),
-    awful.key({}, "XF86MonBrightnessDown", function () brightness_widget:dec() end, 
-    	{description = "decrease brightness", group = "custom"}), 
+   -- awful.key({}, "XF86MonBrightnessUp", function () brightness_widget:inc() end,
+    --	{description = "increase brightness", group = "custom"}),
+    --awful.key({}, "XF86MonBrightnessDown", function () brightness_widget:dec() end, 
+   -- 	{description = "decrease brightness", group = "custom"}), 
 	-- screenshot
     awful.key({}, "Print"	 , function () awful.spawn("spectacle") end), 
     --
@@ -625,3 +617,4 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+awful.spawn("start-pulseaudio-x11")
