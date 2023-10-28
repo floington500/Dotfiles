@@ -6,4 +6,4 @@ A place for me to store configuration files for Linux on the cloud.
 
 To use any of these configurations, just clone the repo and create a symbolic link from the designated folder which you need the configuration in.
 
-You can also just copy and paste it if you choose to do so of course, this is just my preference.
+You can also just copy and paste sections of what you may want though which is also perfectly fine.
