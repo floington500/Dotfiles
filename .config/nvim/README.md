@@ -8,18 +8,18 @@ The normal keymappings that come with Neovim have been slightly modified to be a
 
 ### Window Management
 
- - '<leader>+sv': split the window vertically
- - '<leader>+sh': split the window horizontally
- - '<leader>+se': equalize the splits on the tab
- - '<leader>+sx': close the current window
+ - `<leader>+sv`: split the window vertically
+ - `<leader>+sh`: split the window horizontally
+ - `<leader>+se`: equalize the splits on the tab
+ - `<leader>+sx`: close the current window
 
 ### Tab Managment
 
- - '<leader>+to': open a new tab
- - '<leader>+tx': close the current tab
- - '<leader>+tn': go to the next tab
- - '<leader>+tp': go to the previous tab
- - '<leader>+tf': move the current buffer to a new tab
+ - `<leader>+to`: open a new tab
+ - `<leader>+tx`: close the current tab
+ - `<leader>+tn`: go to the next tab
+ - `<leader>+tp`: go to the previous tab
+ - `<leader>+tf`: move the current buffer to a new tab
 
 ## Plugins
 
@@ -29,17 +29,17 @@ A few plugins have been added using the [lazy.nvim](https://github.com/folke/laz
 
 The window managment keybinds are made possible through the [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) and allow for the use of the following keybinds to seamlessly navigate between open windows:
 
- - 'CTRL-h': left
- - 'CTRL-j': down
- - 'CTRL-k': up
- - 'CTRL-l': right
- - 'CTRL-\': previous split
+ - `CTRL-h`: left
+ - `CTRL-j`: down
+ - `CTRL-k`: up
+ - `CTRL-l`: right
+ - `CTRL-\`: previous split
 
 ### Explorer
 
 This is a pretty neat feature which uses the [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua) plugin that replaces the traditional Neovim explorer with one thats easier to use and is fully integrated into editor.
 
-- '<leader>+ee': open and also close the explorer
+- `<leader>+ee`: open and also close the explorer
 
 The Tmux-Navigation plugin can also be used with this to switch between your main window and the explorer very easily.
 
