@@ -44,8 +44,11 @@ end
 -- }}}
 
 -- {{{ Variable definitions
+-- Define the configuration directory
+config_dir = awful.util.get_configuration_dir()
+
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/default/theme.lua")
+beautiful.init(config_dir.."default/theme.lua")
 
 -- My widgets
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
