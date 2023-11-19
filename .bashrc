@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+alias la='ls -la'
 alias grep='grep --color=auto'
 alias lg='ls -la | grep $1'
 PS1='[\u@\h \W]\$ '
