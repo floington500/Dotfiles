@@ -50,13 +50,13 @@ config_dir = awful.util.get_configuration_dir()
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(config_dir.."default/theme.lua")
 
--- My widgets
+-- {{{ My widgets
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')    
---	
+-- }}}
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -229,6 +229,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+
 	    brightness_widget({
 		program = "light",
 		step = 5,
