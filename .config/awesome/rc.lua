@@ -183,7 +183,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
     --
     -- My tag configuration
-	local names = {"main", "www", "discord", "office"}
+	local names = {"main", "www", "office"}
 	local l = awful.layout.suit
 	local layouts = { l.floating, l.tile, l.floating, l.tile }
 	awful.tag(names, s, layouts)
