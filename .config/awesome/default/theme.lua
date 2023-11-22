@@ -24,7 +24,8 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(0) -- distance between max window height and wibar
+theme.useless_gap   = 13 -- distance between max window height and wibar
+theme.gap_single_client = true -- gaps when only one client is in the frame
 theme.border_width  = dpi(3) -- border around windows
 theme.border_normal = "#000000"
 theme.border_focus  = "#e6ab2c"
