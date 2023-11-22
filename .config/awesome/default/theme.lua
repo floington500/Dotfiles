@@ -1,6 +1,6 @@
---------------------------
--- Default awesome theme --
----------------------------
+-------------------------------------------------
+-- **slightly modified** Default awesome theme --
+-------------------------------------------------
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
@@ -25,9 +25,9 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(0) -- distance between max window height and wibar
-theme.border_width  = dpi(5) -- border around windows
+theme.border_width  = dpi(3) -- border around windows
 theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
+theme.border_focus  = "#e6ab2c"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
