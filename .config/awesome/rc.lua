@@ -3,16 +3,16 @@
 pcall(require, "luarocks.loader")
 
 -- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
+local gears = require("gears") -- keybinds
+local awful = require("awful") -- window manager
 require("awful.autofocus")
 -- Widget and layout library
-local wibox = require("wibox")
+local wibox = require("wibox") -- wibar
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
+local naughty = require("naughty") -- notification manager
+local menubar = require("menubar") -- program menu
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -94,16 +94,8 @@ awful.layout.layouts = {
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
-}
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
+mymainmenu = awful.menu({ items = {  { "open terminal", terminal }
                                   }
                         })
 
@@ -182,12 +174,12 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     --
-    -- My tag configuration
+    -- {{{ Tag configuration
 	local names = {"main", "www", "office"}
 	local l = awful.layout.suit
 	local layouts = { l.floating, l.tile, l.floating, l.tile }
 	awful.tag(names, s, layouts)
-    --
+    -- }}}
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -273,7 +265,6 @@ globalkeys = gears.table.join(
     -- My keybinds
     	-- app launching
     awful.key({ mykey, 		  }, "f", function () awful.spawn("firefox") end),
-    awful.key({ mykey, 		  }, "d", function () awful.spawn("discord") end),
     awful.key({ mykey, 		  }, "o", function () awful.spawn("obsidian") end),
     	-- cool keyboard
     awful.key({}, "XF86AudioRaiseVolume", function () volume_widget:inc(5) end),
@@ -325,8 +316,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
+            if client.focus then client.focus:raise()
             end
         end,
         {description = "go back", group = "client"}),
@@ -621,4 +611,4 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-awful.spawn("start-pulseaudio-x11")
+awful.spawn("start-pulseaudio-x11") -- activate audio
