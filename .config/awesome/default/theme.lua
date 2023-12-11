@@ -35,6 +35,13 @@ theme.border_marked = "#91231c"
 theme.wibar_opacity = 0.9
 -- }}
 
+-- {{ tasklist
+theme.taglist_fg_focus = "#ffffff"
+theme.tasklist_bg_focus = "#0d1b1f"
+theme.taglist_fg_focus = "#ffffff"
+theme.taglist_bg_focus = "#1c2640"
+-- }}
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
