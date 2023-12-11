@@ -15,5 +15,3 @@ export PATH=$PATH:"~/.jdks/jdk-19.0.2/bin"
 export PATH=$PATH:"~/.local/bin"
 
 eval "$(starship init bash)"
-
-neofetch
