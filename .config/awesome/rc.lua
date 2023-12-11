@@ -18,6 +18,13 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- {{{ My widgets
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')    
+-- }}}
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -46,17 +53,10 @@ end
 -- {{{ Variable definitions
 -- Define the configuration directory
 config_dir = awful.util.get_configuration_dir()
+seperator_text = " | "
 
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(config_dir.."default/theme.lua")
-
--- {{{ My widgets
-local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
-local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
-local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
-local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
-local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')    
--- }}}
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -222,6 +222,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 
+	    wibox.widget.textbox(seperator_text),
 	    brightness_widget({
 		program = "light",
 		step = 5,
@@ -230,22 +231,33 @@ awful.screen.connect_for_each_screen(function(s)
 		percentage = true,
 		rmb_set_max = true
 	    }),
+
+	    wibox.widget.textbox(seperator_text),
 	    volume_widget({
 	   	tooltip = true 
 	    }),
+
+	    wibox.widget.textbox(seperator_text),
 	    battery_widget({
 		show_current_level = true,
 		display_notification = true,
 		enable_battery_warning = false
 	    }),
+
+	    wibox.widget.textbox(seperator_text),
 	    cpu_widget({
 		width = 70,
 		step_spacing = 2,
 		enable_kill_button=true
 	    }),
+
             mykeyboardlayout,
             wibox.widget.systray(),
+
+	    wibox.widget.textbox(seperator_text),
             mytextclock,
+
+	    wibox.widget.textbox(seperator_text),
             s.mylayoutbox,
         },
     }
@@ -262,21 +274,23 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    -- My keybinds
+    -- {{{ My keybinds 
     	-- app launching
-    awful.key({ mykey, 		  }, "f", function () awful.spawn("firefox") end),
-    awful.key({ mykey, 		  }, "o", function () awful.spawn("obsidian") end),
-    	-- cool keyboard
-    awful.key({}, "XF86AudioRaiseVolume", function () volume_widget:inc(5) end),
-    awful.key({}, "XF86AudioLowerVolume", function () volume_widget:dec(5) end),
-    awful.key({}, "XF86AudioMute", function () volume_widget:toggle() end), 
-   -- awful.key({}, "XF86MonBrightnessUp", function () brightness_widget:inc() end,
-    --	{description = "increase brightness", group = "custom"}),
-    --awful.key({}, "XF86MonBrightnessDown", function () brightness_widget:dec() end, 
-   -- 	{description = "decrease brightness", group = "custom"}), 
+    awful.key({ mykey }, "f", function () awful.spawn("firefox") end),
+    awful.key({ mykey }, "o", function () awful.spawn("obsidian") end),
+
+    	-- laptop keyboard
+    awful.key({ mykey }, "Up", function () volume_widget:inc(5) end),
+    awful.key({ mykey }, "Down", function () volume_widget:dec(5) end),
+    awful.key({}, "F8", function () volume_widget:toggle() end), 
+    awful.key({}, "XF86MonBrightnessUp", function () brightness_widget:inc() end,
+    	{description = "increase brightness", group = "custom"}),
+    awful.key({}, "XF86MonBrightnessDown", function () brightness_widget:dec() end, 
+    	{description = "decrease brightness", group = "custom"}), 
+
 	-- screenshot
     awful.key({}, "Print"	 , function () awful.spawn("spectacle") end), 
-    --
+    -- }}}
 	
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -539,7 +553,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
