@@ -24,12 +24,16 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = 13 -- distance between max window height and wibar
+theme.useless_gap   = 7 -- spacing of windows when they are tiled
 theme.gap_single_client = true -- gaps when only one client is in the frame
 theme.border_width  = dpi(3) -- border around windows
 theme.border_normal = "#000000"
 theme.border_focus  = "#e6ab2c"
 theme.border_marked = "#91231c"
+
+-- {{ wibar
+theme.wibar_opacity = 0.9
+-- }}
 
 -- There are other variable sets
 -- overriding the default one when
