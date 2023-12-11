@@ -18,13 +18,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
--- {{{ My widgets
-local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
-local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
-local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
-local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')    
--- }}}
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -54,6 +47,22 @@ end
 -- Define the configuration directory
 config_dir = awful.util.get_configuration_dir()
 seperator_text = " | "
+
+-- Rounded edges on wibar
+local wibar_shape = function(cr, width, height)
+	gears.shape.rounded_rect(cr, width, height, 47)
+end
+
+-- Margins on left and right
+local margin = wibox.container.margin()
+margin:set_margins(5, 0, 0, 0)
+
+-- {{{ My widgets
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local volume_widget = require('awesome-wm-widgets.pactl-widget.volume')    
+-- }}}
 
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(config_dir.."default/theme.lua")
@@ -206,17 +215,26 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
-
+    s.mywibox = awful.wibar({ 
+	position = "top",
+	screen = s, 
+	bg = "#282c34",
+	fg = "#abb2bf",
+	width = 1800,
+	height = 33,
+	border_width = 12,
+	shape = wibar_shape
+    })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-	    logout_menu_widget(), --mylauncher,	
-            s.mytaglist,
-            s.mypromptbox
+		margin,
+		layout = wibox.layout.fixed.horizontal,
+	    	logout_menu_widget(), --mylauncher,	
+            	s.mytaglist,
+            	s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
@@ -258,6 +276,7 @@ awful.screen.connect_for_each_screen(function(s)
 
 	    wibox.widget.textbox(seperator_text),
             s.mylayoutbox,
+	    margin
         },
     }
 end)
