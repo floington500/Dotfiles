@@ -83,21 +83,11 @@ mykey  = "Mod1"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
 	awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    -- awful.layout.suit.fair.horizontal,
-    -- awful.layout.suit.spiral,
-    -- awful.layout.suit.spiral.dwindle,
-    -- awful.layout.suit.max,
-    -- awful.layout.suit.max.fullscreen,
-    -- awful.layout.suit.magnifier,
-    -- awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,    
+    	awful.layout.suit.fair,
+    	awful.layout.suit.tile,
+    	awful.layout.suit.tile.left,
+    	awful.layout.suit.tile.bottom,
+    	awful.layout.suit.tile.top,
 }
 -- }}}
 
@@ -186,7 +176,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- {{{ Tag configuration
 	local names = {"main", "www", "office"}
 	local l = awful.layout.suit
-	local layouts = { l.floating, l.tile, l.floating, l.tile }
+	local layouts = { l.fair, l.fair, l.floating }
 	awful.tag(names, s, layouts)
     -- }}}
 
@@ -216,8 +206,9 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ 
-	position = "top",
 	screen = s, 
+	ontop = true,
+	position = "top",
 	bg = "#282c34",
 	fg = "#abb2bf",
 	width = 1800,
