@@ -251,7 +251,6 @@ awful.screen.connect_for_each_screen(function(s)
 		enable_kill_button=true
 	    }),
 
-            mykeyboardlayout,
             wibox.widget.systray(),
 
 	    wibox.widget.textbox(seperator_text),
@@ -280,8 +279,8 @@ globalkeys = gears.table.join(
     awful.key({ mykey }, "o", function () awful.spawn("obsidian") end),
 
     	-- laptop keyboard
-    awful.key({ mykey }, "Up", function () volume_widget:inc(5) end),
-    awful.key({ mykey }, "Down", function () volume_widget:dec(5) end),
+    awful.key({}, "XF86AudioRaiseVolume", function () volume_widget:inc(5) end),
+    awful.key({}, "XF86AudioLowerVolume", function () volume_widget:dec(5) end),
     awful.key({}, "F8", function () volume_widget:toggle() end), 
     awful.key({}, "XF86MonBrightnessUp", function () brightness_widget:inc() end,
     	{description = "increase brightness", group = "custom"}),
