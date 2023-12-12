@@ -7,7 +7,16 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
+
+--- {{{ Variable declaration
+
 local themes_path = gfs.get_themes_dir()
+local white = "#ffffff"
+local dark_blue = "#0d1b1f" -- normal
+local gray_blue = "#d7dbfc" -- normal
+local bright_blue = "#1c2640" -- focus
+
+--- }}}
 
 local theme = {}
 
@@ -28,19 +37,26 @@ theme.useless_gap   = 7 -- spacing of windows when they are tiled
 theme.gap_single_client = true -- gaps when only one client is in the frame
 theme.border_width  = dpi(3) -- border around windows
 theme.border_normal = "#000000"
-theme.border_focus  = "#e6ab2c"
+theme.border_focus  = "#511abd"
 theme.border_marked = "#91231c"
 
 -- {{ wibar
 theme.wibar_opacity = 0.9
--- }}
 
--- {{ tasklist
-theme.taglist_fg_focus = "#ffffff"
-theme.tasklist_bg_focus = "#0d1b1f"
-theme.taglist_fg_focus = "#ffffff"
-theme.taglist_bg_focus = "#1c2640"
--- }}
+-- {{{ taglist
+theme.taglist_fg_focus = white
+theme.taglist_bg_focus = bright_blue
+-- }}}
+-- {{{ tasklist 
+theme.tasklist_fg_normal = gray_blue
+theme.tasklist_bg_normal = dark_blue
+theme.tasklist_fg_focus = white
+theme.tasklist_bg_focus = bright_blue
+theme.tasklist_fg_minimize = gray_blue
+theme.tasklist_bg_minimize = dark_blue
+-- }}}
+--
+-- }}}
 
 -- There are other variable sets
 -- overriding the default one when
