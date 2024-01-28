@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# 
+# The console display manager configuration.
+#
+
+binlist=(
+	'startx'
+	'/bin/bash --login'
+)
+namelist=(AwesomeWM Terminal)
+flaglist=(C C)
+
+# See /usr/share/doc/cdm/themes for themes.
+dialogrc=/usr/share/doc/cdm/themes/blackandwhite
+
+# Index of the first item in the menu.
+countfrom=1
+
+# Set default display
+display=5
+
+# Where should the first X tty be spawned?
+xtty=3
+
+# Should cdm(1) stick to the specified display?
+locktty=yes
+
+consolekit=no
+
+cktimeout=30
+
+altstartx=yes
+
+startxlog=/dev/null
