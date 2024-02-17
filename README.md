@@ -1,9 +1,5 @@
-# Dotfiles
-
-A place for me to store Linux configuration files.
-
 ## Usage
 
-To use any of these configurations, just clone the repo and create a symbolic link from the designated folder or file which has the configuration you need.
+Create a symbolic link where you need the configuration file.
 
-Copying and pasting sections is also perfectly fine.
+Look up for inspiration, and down in desperation.
