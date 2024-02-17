@@ -1,18 +1,18 @@
 #!/bin/bash
-
-# 
-# The console display manager configuration.
 #
+#----------------------------------------------
+#- The console display manager configuration.--
+#----------------------------------------------
 
 binlist=(
 	'startx'
-	'/bin/bash --login'
+	'/bin/bash'
 )
 namelist=(AwesomeWM Terminal)
 flaglist=(C C)
 
 # See /usr/share/doc/cdm/themes for themes.
-dialogrc=/usr/share/doc/cdm/themes/blackandwhite
+dialogrc=/usr/share/doc/cdm/themes/cdm
 
 # Index of the first item in the menu.
 countfrom=1
@@ -26,10 +26,14 @@ xtty=3
 # Should cdm(1) stick to the specified display?
 locktty=yes
 
+# Additional arguments to pass to X server
+serverargs=(-nolisten tcp)
+
+# Disable ConsoleKit
 consolekit=no
 
-cktimeout=30
-
+# Alternative method to start X not as expected
 altstartx=yes
 
+# Destination from stdout and stderr from startx
 startxlog=/dev/null
